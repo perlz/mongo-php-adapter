@@ -143,6 +143,43 @@ class MongoId implements Serializable, TypeInterface, JsonSerializable
     }
 
     /**
+    * PHP 8.1 support
+    * @return string
+    */
+   public function __serialize()
+   {
+       return (string) $this->objectID;
+   }
+
+   /**
+   * PHP 8.1 support
+    * @param string $serialized
+    */
+   public function __unserialize($serialized)
+   {
+       $this->createObjectID($serialized);
+   }
+
+   /**
+    * PHP 8.1 support
+    * @return string
+    */
+   public function __serialize()
+   {
+       return (string) $this->objectID;
+   }
+
+   /**
+   * PHP 8.1 support
+    * @param string $serialized
+    */
+   public function __unserialize($serialized)
+   {
+       $this->createObjectID($serialized);
+   }
+
+
+    /**
      * Gets the incremented value to create this id
      * @link http://php.net/manual/en/mongoid.getinc.php
      * @return int Returns the incremented value used to create this MongoId.
